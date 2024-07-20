@@ -30,7 +30,7 @@ class Agent:
         try:
             tool_descriptions = self.toolbox.tools()
             agent_system_prompt = agent_system_prompt_template.format(tool_descriptions=tool_descriptions)
-            response = self.model_service.generate_text(prompt, agent_system_prompt)
+            response = self.model_service.generate_text(prompt)
             return response
         except Exception as e:
             log_error(f"Error in think method: {str(e)}")
