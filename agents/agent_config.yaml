@@ -1,0 +1,16 @@
+agents:
+  summarization:
+    model_name: "OpenAI"  # or "Ollama"
+    system_prompt: "Your system prompt here"
+    temperature: 0.7
+    tools:
+      - tools.basic_calculator.basic_calculator
+      - tools.reverser.reverse_string
+  email:
+    model_name: "OpenAI"  # or "Ollama"
+    system_prompt: "Your system prompt here"
+    temperature: 0.5
+    tools:
+      - tools.email_drafter.draft_email
+      - tools.email_sender.send_email
+  # Add other agents here
