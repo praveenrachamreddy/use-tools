@@ -28,8 +28,12 @@ class OpenAIModel(BaseModel):
         
         response = requests.post(self.model_endpoint, headers=self.headers, data=json.dumps(payload))
         response_json = response.json()
-        response = json.loads(response_json['choices'][0]['message']['content'])
-
-        print(f"\n\nResponse from OpenAI model: {response}")
-
-        return response
+        # Check if 'choices' exists in the response
+        if 'choices' in response_json:
+            response = json.loads(response_json['choices'][0]['message']['content'])
+            print(F"\n\nResponse from OpenAI model: {response}")
+            return response
+        else:
+            # Handle error case
+            print(f"Error response from API: {response_json}")
+            return {"error": "Failed to get valid response from API"}
